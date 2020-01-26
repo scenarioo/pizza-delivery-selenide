@@ -13,6 +13,7 @@ public class SummaryPage {
     private SelenideElement pizzaSummary = step.$("#summary_pizza");
     private SelenideElement drinksSummary = step.$("#summary_drinks");
     private SelenideElement nextButton = step.$("button.next");
+    private SelenideElement processingOrderProgress = step.$("#processing-order");
 
     public static SummaryPage shouldDisplay() {
         SummaryPage page = new SummaryPage();
@@ -28,8 +29,16 @@ public class SummaryPage {
         pizzaSummary.shouldHave(exactText(pizzaText));
         drinksSummary.shouldHave(exactText(drinksText));
         nextButton.click();
+        waitForOrderProcessed();
         return OrderConfirmationPage.shouldDisplay();
         // OrderConfirmationPage.should
+    }
+
+    private void waitForOrderProcessed() {
+        // This usually takes some time to process the order,
+        // so here we have to explicitly wait a little bit longer ...
+        processingOrderProgress.waitWhile(visible, 12 * 1000); // wait up to 10 seconds for the order to be processed
+        // DONT: just increasing default timeouts for such cases is a very bad idea!
     }
 
 }
