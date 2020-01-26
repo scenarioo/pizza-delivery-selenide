@@ -22,7 +22,7 @@ public class PizzaShop {
     private SelenideElement nextButton = step.$("button.next");
 
     public static PizzaShop start() {
-        open("https://scenarioo.org/pizza-delivery/");
+        open("https://scenarioo.org/pizza-delivery/pizza-shop");
         PizzaShop pizzaShop = new PizzaShop();
         pizzaShop.shouldDisplayHeaderWithPhoneNumber();
         pizzaShop.shouldDisplaySelectPhoneNumberStep();
