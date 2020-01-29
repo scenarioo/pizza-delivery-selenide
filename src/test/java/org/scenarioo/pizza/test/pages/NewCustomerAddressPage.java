@@ -13,7 +13,7 @@ public class NewCustomerAddressPage {
     private SelenideElement zipAndCityInput = step.$("#zipCodeAndCity");
     private SelenideElement nextButton = step.$("button.next");
 
-    public static NewCustomerAddressPage shouldDisplay() {
+    static NewCustomerAddressPage shouldDisplay() {
         NewCustomerAddressPage page = new NewCustomerAddressPage();
         page.shouldBeVisible();
         return page;
@@ -24,10 +24,8 @@ public class NewCustomerAddressPage {
     }
 
     public SelectPizzaPage withAddress(String street, String zipAndCity) {
-        streetInput.shouldBe(empty);
-        streetInput.sendKeys(street);
-        zipAndCityInput.shouldBe(empty);
-        zipAndCityInput.sendKeys(zipAndCity);
+        streetInput.setValue(street);
+        zipAndCityInput.setValue(zipAndCity);
         nextButton.click();
         return SelectPizzaPage.shouldDisplay();
     }
