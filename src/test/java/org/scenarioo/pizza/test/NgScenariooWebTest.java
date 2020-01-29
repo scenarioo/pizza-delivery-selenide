@@ -1,14 +1,15 @@
 package org.scenarioo.pizza.test;
 
 import com.codeborne.selenide.CollectionCondition;
+import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.Selectors;
 import org.junit.Test;
 import org.scenarioo.pizza.test.pages.PizzaShop;
 
 import static com.codeborne.selenide.CollectionCondition.*;
-import static com.codeborne.selenide.Selectors.byText;
-import static com.codeborne.selenide.Selectors.withText;
+import static com.codeborne.selenide.Condition.*;
+import static com.codeborne.selenide.Selectors.*;
 import static com.codeborne.selenide.Selenide.*;
 
 /**
@@ -25,10 +26,13 @@ public class NgScenariooWebTest {
 
         open("http://demo.scenarioo.org/scenarioo-master");
 
+        // Filter use cases
+        $(".tableSearch").setValue("page");
+
         // Browse use cases
         ElementsCollection usecaseRows = $(".usecase-table").$$("tr");
-        usecaseRows.shouldHave(size(5));
-        usecaseRows.get(2).$(byText("Find Page")).click();
+        usecaseRows.shouldHave(size(3));
+        usecaseRows.get(1).shouldHave(text("Find Page")).click();
 
         // Browse scenarios
         ElementsCollection scenariosRows = $(".scenario-table").$$("tr");
