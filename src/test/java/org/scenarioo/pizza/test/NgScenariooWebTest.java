@@ -12,8 +12,11 @@ import static com.codeborne.selenide.Selectors.withText;
 import static com.codeborne.selenide.Selenide.*;
 
 /**
- * A simple web test to demonstrate:
- * - Selenide/Selenium can also test angular apps (scenarioo here) without problems
+ * A simple web test to demonstrate that
+ * Selenide/Selenium can also test angular apps (scenarioo here) without problems.
+ *
+ * This is thanks to the cool selenide element and collection wrappers
+ * including a lazy loading with implicit waiting technique.
  */
 public class NgScenariooWebTest {
 
